@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'south',
+    'twitterhandler',
 )
 
 MIDDLEWARE_CLASSES = (
