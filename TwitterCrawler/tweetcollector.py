@@ -3,6 +3,7 @@ import json
 import re
 import os
 from stemming import porter2
+import BarCrawlClasses
 
 class TweetCollector():
 	
@@ -46,9 +47,9 @@ class TweetCollector():
 			if i < 20:
 				#outPutFile.write(str(tweet.text.encode('utf-8')) + '\n')
 				
-				lat, lon = tweet.geo if tweet.geo else ('', '')
-				outPutFile.write(str(tweet.text.encode('utf-8')) + '\n')
-				print(tweet.geo)
+				lat, lon = tweet.geo["coordinates"] if tweet.geo else ('', '')
+				outPutFile.write(str(tweet.text.encode('utf-8')) + '\t' + "Coordinates: (" + str(lat) + " , " + str(lon) + ")" + '\n')
+				#print(tweet.geo)
 				print tweet.created_at
 				i+=1
 			else:
@@ -76,5 +77,5 @@ class TweetCollector():
 if __name__ == "__main__":
 	tweetCollector = TweetCollector()
 	#tweetCollector.read_query_list("queryList.txt")
-	tweetCollector.read_query_list("queryList_Project.txt")
+	tweetCollector.read_query_list("ProjectQueryList.txt")
 	tweetCollector.send_querys()
