@@ -16,5 +16,7 @@ class Location(models.Model):
 	longitude_3 = models.FloatField(default=0)
 	lattitude_4 = models.FloatField(default=0)
 	longitude_4 = models.FloatField(default=0)
+	lattitude_center = models.FloatField(default=0)
+	longitude_center = models.FloatField(default=0)
 	def __unicode__(self):
 		return self.place_name
