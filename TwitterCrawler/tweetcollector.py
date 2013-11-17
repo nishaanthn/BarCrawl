@@ -19,8 +19,13 @@ class TweetCollector():
 		self.api = tweepy.API(self.auth)
 		
 		self.queries = []
+
 		
-	
+	def check_api_rate_limit(self):
+		self.poo = 1
+		return self.api.rate_limit_status()
+
+
 	def CollectTweets(self, query):
 		
 		# Create File info for tweets
@@ -67,15 +72,16 @@ class TweetCollector():
 	
 	def send_querys(self):
 		#Loop through all querys and send that them to the tweet collector
-		i = 0
 		for query in self.queries:
 			print query
-			if i == 0:
-				self.CollectTweets(query)
-				i+= 1
+			self.CollectTweets(query)
 	
 if __name__ == "__main__":
 	tweetCollector = TweetCollector()
 	#tweetCollector.read_query_list("queryList.txt")
-	tweetCollector.read_query_list("ProjectQueryList.txt")
-	tweetCollector.send_querys()
+	#tweetCollector.read_query_list("ProjectQueryList.txt")
+	#tweetCollector.send_querys()
+	print tweetCollector.check_api_rate_limit()
+
+
+
