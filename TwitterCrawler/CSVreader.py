@@ -18,24 +18,25 @@ def loadAllBarData(fileName, barList):
 			# --- Save the Contents of the Line
 			barName = lineContents[0]
 			barTwitterHandle = lineContents[1]
-			barFBid = lineContents[2]
-			#bar4SquareID = lineContents[3]
+			barTwitterID = lineContents[2]
+			barFBid = lineContents[3]
+			#bar4SquareID = lineContents[4]
 			
 			barCornerLocs = []
-			swCorner = (float(lineContents[4]), float(lineContents[5]))
-			nwCorner = (float(lineContents[6]), float(lineContents[7]))
-			neCorner = (float(lineContents[8]), float(lineContents[9]))
-			seCorner = (float(lineContents[10]), float(lineContents[11]))
+			swCorner = (float(lineContents[5]), float(lineContents[6]))
+			nwCorner = (float(lineContents[7]), float(lineContents[8]))
+			neCorner = (float(lineContents[9]), float(lineContents[10]))
+			seCorner = (float(lineContents[11]), float(lineContents[12]))
 
 			barCornerLocs.append(swCorner)
 			barCornerLocs.append(nwCorner)
 			barCornerLocs.append(neCorner)
 			barCornerLocs.append(seCorner)
 
-			barCenter = (float(lineContents[12]), float(lineContents[13]))
+			barCenter = (float(lineContents[13]), float(lineContents[14]))
 
 			# --- Create Variable and Store it  **** Change As Necessary for DB **** 
-			bar = Bar(barName, barCenter, barCornerLocs, barTwitterHandle, barFBid, "USA", "College Station")
+			bar = Bar(barName, barCenter, barCornerLocs, barTwitterHandle, barTwitterID, barFBid, "USA", "College Station")
 			barList.append(bar)
 
 		# --- Printing Bar Data (for testing)

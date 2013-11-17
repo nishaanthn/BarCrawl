@@ -24,13 +24,14 @@ class Tweet():
 		
 
 class Bar():
-	def __init__(self, _name, _centerOfBarLoc, _barCorners, _twitterHandle = "", _barFBid = "" , _country = "", _city = ""):
+	def __init__(self, _name, _centerOfBarLoc, _barCorners, _twitterHandle = "", _twitterID = "" , _barFBid = "" , _country = "", _city = ""):
 		
 		# --- Initialize the hand-gather bar information
 		self.country = _country
 		self.city = _city
 		self.name = _name
 		self.twitterHandle = _twitterHandle
+		self.twitterID = _twitterID
 		self.FBid = _barFBid
 		self.centerOfBarLoc = _centerOfBarLoc
 		self.barCorners = _barCorners
@@ -41,6 +42,7 @@ class Bar():
 		print " ********************************************************"
 		print " \t name: " + str(self.name) + "\n"
 		print " \t twitterHandle: " + str(self.twitterHandle) + "\n"
+		print " \t twitterID : " + str(self.twitterID) + "\n"
 		print " \t FBid: " + str(self.FBid) + "\n"
 		print " \t SW Bar Corner: " + str(self.barCorners[0]) + "\n"
 		print " \t NW Bar Corner: " + str(self.barCorners[1]) + "\n"

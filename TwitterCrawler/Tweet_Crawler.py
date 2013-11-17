@@ -6,6 +6,8 @@ import thread
 from stemming import porter2
 from BarCrawlClasses import Tweet as Tweet
 from BarCrawlClasses import Bar as Bar
+from CSVreader import loadAllBarData
+import Tweet_Crawler_Functions as helperFunctions
 
 count = 0
 
@@ -17,39 +19,22 @@ tweetsToClassify = []
 specificBarTweets = {}  			#  ---> {Bar TwitterHandle : [tweet_1, ..., tweet_n] } 
 generalBarGoerTweets = []
 
-
-def printCollectedTweets():
-	print " ---- specificBarTweets --- \n"
-	for bar in specificBarTweets:
-		print "BAR NAME: " + str(bar)
-		for tweet in specificBarTweets[bar]:
-			tweet.printTweet()
 		
 
+''' ^^^^^^^^   Handles Data Received from Each Twitter Stream. ^^^^^^^^^^ '''
 class TweetStreamListener(tweepy.StreamListener):
-    ''' Handles data received from the stream. '''
  	
     def __init__(self, _streamID, _api):
     	""" --- Stream ID is used to determine where to send the collected Tweets in on_status --- """
     	self.api = _api	
     	super(tweepy.StreamListener, self).__init__()
     	self.streamID = _streamID
-    	
-
-    def determine_Bars_Mentioned(self, userMentions):
-    	""" --- Check All Users Mentioned in Tweet to Find Bar(s) That Were Mentioned ---"""
-    	tweetHandleNames = []
-
-    	for userMentioned in userMentions:
-    		if userMentioned['screen_name'] in specificBarTweets:
-				tweetHandleNames.append(userMentioned['screen_name'])
-
-    	return tweetHandleNames
 
 
     def on_status(self, status):
         """ --- When a Status/Tweet is Captured, It Comes Here --- """
 
+        # --- Tweet is Collected With the Handle Stream
         if self.streamID == "handle":
 
         	# --- Create Tweet Obeject From Pieces of the Tweet We Need
@@ -58,24 +43,21 @@ class TweetStreamListener(tweepy.StreamListener):
         	
 
         	# --- Determine Which Bar(s) Were Mentioned
-        	barsMentioned = self.determine_Bars_Mentioned(status.entities['user_mentions'])
+        	barsMentioned = helperFunctions.determine_Bars_Mentioned(status.entities['user_mentions'], bars)
 
         	# --- Add Tweet to specificBarTweets Object
         	for barName in barsMentioned:
         		# will need thread lock here
         		specificBarTweets[barName].append(tempTweet)
 
-
-        	print "---specificBarTweets--- \n"
-        	for bar in specificBarTweets:
-        		print "BAR NAME: " + str(bar)
-        		for tweet in specificBarTweets[bar]:
-        			tweet.printTweet()
+        	# --- Print the Tweets Collected ( *** Testing Purposes Only *** )
+        	helperFunctions.printCollectedTweets(specificBarTweets)
 
 
 
-
+        # --- Tweet is Collected With the Location Stream
         elif self.streamID == "location":
+        	
         	# --- Classify Tweet: Relative to Specific Bar OR Just a Happy NorthGater
         	hi = 1
  		
@@ -142,50 +124,12 @@ class TweetCrawler():
 			barIDs.append(barID)
 
 
-	def loadAllBarData(self, fileName):
-		inputFile = open(fileName)
-
-		for line in inputFile:
-			# --- Split the Line at the Comma
-			lineContents = line.split(',')
-
-			# --- Remove WhiteSpace From Each lineContent
-			for piece in lineContents:
-				piece = piece.strip()
-
-			# --- Save the Contents of the Line
-			barName = lineContents[0]
-			barTwitterHandle = lineContents[1]
-			barFBid = lineContents[2]
-			#bar4SquareID = lineContents[3]
-			
-			barCornerLocs = []
-			swCorner = (float(lineContents[4]), float(lineContents[5]))
-			nwCorner = (float(lineContents[6]), float(lineContents[7]))
-			neCorner = (float(lineContents[8]), float(lineContents[9]))
-			seCorner = (float(lineContents[10]), float(lineContents[11]))
-
-			barCornerLocs.append(swCorner)
-			barCornerLocs.append(nwCorner)
-			barCornerLocs.append(neCorner)
-			barCornerLocs.append(seCorner)
-
-			barCenter = (float(lineContents[12]), float(lineContents[13]))
-
-
-			bar = Bar(barName, barCenter, barCornerLocs, barTwitterHandle, barFBid, "USA", "College Station")
-			bars.append(bar)
-
-		# --- Printing Bar Data (for testing)
-		for bar in bars:
-			bar.printBarData()
-
 if __name__ == "__main__":
 	tweetCrawler = TweetCrawler()
 	#tweetCrawler.loadTwitterHandleList("TwitterHandleNames.txt")
 	#tweetCrawler.CollectTweetsByHandle()
 	#print specificBarTweets
-	tweetCrawler.loadAllBarData("BarData.csv")
+	loadAllBarData("BarData.csv", bars)
 
 
 
