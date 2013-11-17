@@ -1,0 +1,39 @@
+{% block deets %}
+<link rel="stylesheet" type="text/css" href="css/deets.css" %}" />
+
+<h1>{{ location.place_name }}</h1>
+
+{% if error_message %}<p><strong>{{error_message }}</strong></p> {% endif %}
+
+
+<form action="{% url 'twitterhandler:locationDetails' location.id %}" method="post">
+
+<input type="text" name="Lattitude 1" id="lattitude 1" value="{{ location.lattitude_1 }}" />
+<input type="text" name="Longitude 1" id="longitude 1" value="{{ location.longitude_1 }}" />
+<input type="text" name="Lattitude 2" id="lattitude 2" value="{{ location.lattitude_2 }}" />
+<input type="text" name="Longitude 2" id="longitude 2" value="{{ location.longitude_2 }}" />
+<input type="text" name="Lattitude 3" id="lattitude 3" value="{{ location.lattitude_3 }}" />
+<input type="text" name="Longitude 3" id="longitude 3" value="{{ location.longitude_3 }}" />
+<input type="text" name="Lattitude 4" id="lattitude 4" value="{{ location.lattitude_4 }}" />
+<input type="text" name="Longitude 4" id="longitude 4" value="{{ location.longitude_4 }}" />
+
+</br>
+<input type="submit" value="Submit" />
+</form>
+
+<div id="map_canvas"></div>
+
+<ul>
+<li>{{ location.country }}</li>
+<li>{{ location.city }}</li>
+<li>{{ location.lattitude_1 }}</li>
+<li>{{ location.longitude_1 }}</li>
+<li>{{ location.lattitude_2 }}</li>
+<li>{{ location.longitude_2 }}</li>
+<li>{{ location.lattitude_3 }}</li>
+<li>{{ location.longitude_3 }}</li>
+<li>{{ location.lattitude_4 }}</li>
+<li>{{ location.longitude_4 }}</li>
+</ul>
+
+{% endblock %}

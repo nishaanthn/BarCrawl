@@ -8,26 +8,6 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding model 'Location'
-        db.create_table(u'twitterhandler_location', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('country', self.gf('django.db.models.fields.CharField')(max_length=50)),
-            ('city', self.gf('django.db.models.fields.CharField')(max_length=50)),
-        ))
-        db.send_create_signal(u'twitterhandler', ['Location'])
-
-        # Adding model 'User'
-        db.create_table(u'twitterhandler_user', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('user_id', self.gf('django.db.models.fields.CharField')(max_length=50)),
-            ('user_handle', self.gf('django.db.models.fields.CharField')(max_length=50)),
-            ('user_name', self.gf('django.db.models.fields.CharField')(max_length=50)),
-            ('user_bio', self.gf('django.db.models.fields.CharField')(max_length=200)),
-            ('user_followers', self.gf('django.db.models.fields.IntegerField')(default=0)),
-            ('user_following', self.gf('django.db.models.fields.IntegerField')(default=0)),
-        ))
-        db.send_create_signal(u'twitterhandler', ['User'])
-
         # Adding model 'Tweet'
         db.create_table(u'twitterhandler_tweet', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
@@ -39,16 +19,42 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal(u'twitterhandler', ['Tweet'])
 
+        # Adding model 'User'
+        db.create_table(u'twitterhandler_user', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('user_id', self.gf('django.db.models.fields.CharField')(max_length=50)),
+            ('user_handle', self.gf('django.db.models.fields.CharField')(max_length=50)),
+            ('user_name', self.gf('django.db.models.fields.CharField')(max_length=50)),
+            ('user_bio', self.gf('django.db.models.fields.CharField')(max_length=200)),
+            ('user_followers', self.gf('django.db.models.fields.IntegerField')(default=0)),
+            ('user_following', self.gf('django.db.models.fields.IntegerField')(default=0)),
+            ('user_location', self.gf('django.db.models.fields.IntegerField')(default=0)),
+        ))
+        db.send_create_signal(u'twitterhandler', ['User'])
+
+        # Adding model 'Location'
+        db.create_table(u'twitterhandler_location', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('country', self.gf('django.db.models.fields.CharField')(max_length=50)),
+            ('city', self.gf('django.db.models.fields.CharField')(max_length=50)),
+            ('place_name', self.gf('django.db.models.fields.CharField')(max_length=200)),
+            ('lattitude_centroid', self.gf('django.db.models.fields.FloatField')(default=0)),
+            ('lattitude_threshold', self.gf('django.db.models.fields.FloatField')(default=0)),
+            ('longitude_centroid', self.gf('django.db.models.fields.FloatField')(default=0)),
+            ('longitude_threshold', self.gf('django.db.models.fields.FloatField')(default=0)),
+        ))
+        db.send_create_signal(u'twitterhandler', ['Location'])
+
 
     def backwards(self, orm):
-        # Deleting model 'Location'
-        db.delete_table(u'twitterhandler_location')
+        # Deleting model 'Tweet'
+        db.delete_table(u'twitterhandler_tweet')
 
         # Deleting model 'User'
         db.delete_table(u'twitterhandler_user')
 
-        # Deleting model 'Tweet'
-        db.delete_table(u'twitterhandler_tweet')
+        # Deleting model 'Location'
+        db.delete_table(u'twitterhandler_location')
 
 
     models = {
@@ -56,7 +62,12 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'Location'},
             'city': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
             'country': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'})
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'lattitude_centroid': ('django.db.models.fields.FloatField', [], {'default': '0'}),
+            'lattitude_threshold': ('django.db.models.fields.FloatField', [], {'default': '0'}),
+            'longitude_centroid': ('django.db.models.fields.FloatField', [], {'default': '0'}),
+            'longitude_threshold': ('django.db.models.fields.FloatField', [], {'default': '0'}),
+            'place_name': ('django.db.models.fields.CharField', [], {'max_length': '200'})
         },
         u'twitterhandler.tweet': {
             'Meta': {'object_name': 'Tweet'},
@@ -75,6 +86,7 @@ class Migration(SchemaMigration):
             'user_following': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
             'user_handle': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
             'user_id': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
+            'user_location': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
             'user_name': ('django.db.models.fields.CharField', [], {'max_length': '50'})
         }
     }

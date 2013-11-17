@@ -1,7 +1,10 @@
 from django.contrib import admin
-from twitterhandler.models import Tweet,User,Location
+from twitterhandler.models import Tweet,Location
 
-admin.site.register(Tweet)
-admin.site.register(User)
+	
+class NewTweet(admin.ModelAdmin):
+	search_fields = ['user_name']
+
+admin.site.register(Tweet, NewTweet)
 admin.site.register(Location)
 # Register your models here.

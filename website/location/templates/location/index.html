@@ -1,0 +1,9 @@
+{% if loc_list %}
+    <ul>
+    {% for loc in loc_list %}
+        <li><a href={% url 'twitterhandler:locationDetails' loc.id %}>{{ loc.place_name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No locations are available.</p>
+{% endif %}
