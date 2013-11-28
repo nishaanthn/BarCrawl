@@ -2,7 +2,7 @@
 
 class Tweet():
 	
-	def __init__(self, _tweetID, _createdAt, _text, _userMentions, _lat = None , _lon = None ):
+	def __init__(self, _tweetID, _createdAt, _text, _userMentions, _hashTags, _lat = None , _lon = None ):
 		
 		# --- Important info needed from each collected tweet
 		self.tweetID = _tweetID
@@ -11,8 +11,7 @@ class Tweet():
 		self.lattitude = _lat
 		self.longitude = _lon
 		self.userMentions = _userMentions
-
-		self.printTweet
+		self.hashTags = _hashTags
 
 	def printTweet(self):
 		print " \t tweetID: " + str(self.tweetID) + "\n"
@@ -21,6 +20,7 @@ class Tweet():
 		print " \t lat: " + str(self.lattitude) + "\n"
 		print " \t lon: " + str(self.longitude) + "\n"
 		print " \t userMentions: " + str(self.userMentions) + "\n"
+		print " \t hashTags: " + str(self.hashTags) + "\n\n"
 		
 
 class Bar():
@@ -37,12 +37,13 @@ class Bar():
 		self.barCorners = _barCorners
 		
 		self.tweetList = []
-		
+	
+
 	def printBarData(self):
 		print " ********************************************************"
 		print " \t name: " + str(self.name) + "\n"
 		print " \t twitterHandle: " + str(self.twitterHandle) + "\n"
-		print " \t twitterID : " + str(self.twitterID) + "\n"
+		print " \t twitterID nt: " + str(self.twitterID) + "\n"
 		print " \t FBid: " + str(self.FBid) + "\n"
 		print " \t SW Bar Corner: " + str(self.barCorners[0]) + "\n"
 		print " \t NW Bar Corner: " + str(self.barCorners[1]) + "\n"

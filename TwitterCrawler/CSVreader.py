@@ -40,8 +40,8 @@ def loadAllBarData(fileName, barList):
 			barList.append(bar)
 
 		# --- Printing Bar Data (for testing)
-		for bar in barList:
-			bar.printBarData()
+		#for bar in barList:
+			#bar.printBarData()
 
 
 if __name__ == "__main__":

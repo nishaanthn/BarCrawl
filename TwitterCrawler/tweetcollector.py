@@ -23,7 +23,7 @@ class TweetCollector():
 		
 	def check_api_rate_limit(self):
 		self.poo = 1
-		return self.api.rate_limit_status()
+		return self.api.rate_limit_status(),
 
 
 	def CollectTweets(self, query):
