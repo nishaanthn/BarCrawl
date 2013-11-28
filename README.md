@@ -4,9 +4,9 @@ BarCrawl
 CSCE 470 Final Project
 
 TEAM MEMBERS:
-Doug Lasater
-Nishaanth Narayanan
-Rosbel Sanroman
+* Doug Lasater
+* Nishaanth Narayanan
+* Rosbel Sanroman
 
 Checkpoint 3: Core Algorithm Testing
 ------------------------------------
