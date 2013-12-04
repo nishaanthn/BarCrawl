@@ -9,16 +9,16 @@ from BarCrawlClasses import Bar as Bar
 from CSVreader import loadAllBarData
 import Tweet_Crawler_Functions as helperFunctions
 
-count = 0
 
 # --- Global Variables
 bars = []
 barHandles = []
 barIDs = []
 tweetsToClassify = []
-specificBarTweets = {}  			#  ---> {Bar TwitterHandle : [tweet_1, ..., tweet_n] } 
 generalBarGoerTweets = []
 
+homeLat = 30.587457
+homeLon = -96.342547
 		
 
 ''' ^^^^^^^^   Handles Data Received from Each Twitter Stream. ^^^^^^^^^^ '''
@@ -34,34 +34,33 @@ class TweetStreamListener(tweepy.StreamListener):
     def on_status(self, status):
         """ --- When a Status/Tweet is Captured, It Comes Here --- """
 
+        # --- Create Tweet Obeject From Pieces of the Tweet We Need
+    	lat, lon = status.geo["coordinates"] if status.geo else ('', '')
+
+    	# --- FOR TESTING ONLY REMOVE SOON ----
+    	print "hashtags = " 
+    	print status.entities['hashtags']
+
+    	# --- Save the Relevant Information From the HashTag  (All We Need is the Tag Text)
+    	tagList = []
+    	for tag in status.entities['hashtags']:
+    		tagList.append(tag['text'])
+
+    	tempTweet = Tweet(status.id, status.created_at, status.text, status.entities['user_mentions'], tagList, lat, lon)
+        	
+
         # --- Tweet is Collected With the Handle Stream
         if self.streamID == "handle":
+        	helperFunctions.storeTweet(tempTweet, bars)
 
-        	# --- Create Tweet Obeject From Pieces of the Tweet We Need
-        	lat, lon = status.geo["coordinates"] if status.geo else ('', '')
-        	tempTweet = Tweet(status.id, status.created_at, status.text, lat, lon, status.entities['user_mentions'])
-        	
-
-        	# --- Determine Which Bar(s) Were Mentioned
-        	barsMentioned = helperFunctions.determine_Bars_Mentioned(status.entities['user_mentions'], bars)
-
-        	# --- Add Tweet to specificBarTweets Object
-        	for barName in barsMentioned:
-        		# will need thread lock here
-        		specificBarTweets[barName].append(tempTweet)
-
-        	# --- Print the Tweets Collected ( *** Testing Purposes Only *** )
-        	helperFunctions.printCollectedTweets(specificBarTweets)
-
-
-
-        # --- Tweet is Collected With the Location Stream
+        # --- Tweet is Collected With the Location Stream: Classify Tweet Relative to Specific Bar OR Just a Happy NorthGater
         elif self.streamID == "location":
-        	
-        	# --- Classify Tweet: Relative to Specific Bar OR Just a Happy NorthGater
-        	hi = 1
- 		
+        	helperFunctions.classifyTweet(tempTweet, bars, generalBarGoerTweets)		
+ 			#print "lat = " + str(lat) + '\t' + "lon = " + str(lon) + '\n'
+
         return True
+
+
  
     def on_error(self, status_code):
         print('Got an error with status code: ' + str(status_code))
@@ -71,8 +70,9 @@ class TweetStreamListener(tweepy.StreamListener):
         print('Timeout...')
         return True 			# Return True To continue listening
 
+
+
 class TweetCrawler():
-	
 	
 	def __init__(self):
 		
@@ -97,39 +97,27 @@ class TweetCrawler():
 		self.handleStream.filter(follow = barIDs, track = barHandles)
 
 
-	def CollectTweetsByLocation(self, _lattitude, _longitude, _radius):
-		searchLocation = str(_lattitude) + "," + str(_longitude) + "," + str(_radius)
+	def CollectTweetsByLocation(self, _lattitude, _longitude, _radius, _units):
+		searchLocation = str(_lattitude) + "," + str(_longitude) + "," + str(_radius) + str(_units)
 
-		self.locationStream = Stream(self.auth, self.locationListener)
-		self.locationStream.filter(follow = None, geocode = searchLocation)
-
-		
-	def loadTwitterHandleList(self, fileName):
-		""" --- Reads the Bar Data from the File --- """
-		inputFile = open(fileName)
-
-		for line in inputFile:
-			# --- Split the Line at the Comma
-			lineContents = line.split(',')
-
-			# --- Save Contents of Line
-			barHandle = lineContents[0].strip()
-			barID = lineContents[1].strip()
-
-			# --- Store barHandle 
-			specificBarTweets[barHandle] = []
-			barHandles.append( ("@" + str(barHandle)) )
-			
-			# --- Store barIDs
-			barIDs.append(barID)
+		self.locationStream = tweepy.Stream(self.auth, self.locationListener)
+		self.locationStream.filter(follow = None, locations=[-102.33,31.84,-102.28,31.91])
 
 
 if __name__ == "__main__":
-	tweetCrawler = TweetCrawler()
-	#tweetCrawler.loadTwitterHandleList("TwitterHandleNames.txt")
-	#tweetCrawler.CollectTweetsByHandle()
-	#print specificBarTweets
+	
+	homeLat = 30.587457
+	homeLon = -96.342547
+
+
+	# --- Load the Bar Data From File (Will Change this to Load from DataBase)
 	loadAllBarData("BarData.csv", bars)
+	helperFunctions.loadStreamFiterLists(bars, barHandles, barIDs)
+
+	tweetCrawler = TweetCrawler()
+	tweetCrawler.CollectTweetsByHandle()
+	#tweetCrawler.CollectTweetsByLocation(homeLat, homeLon , 0.1 , "mi")
+	
 
 
 
