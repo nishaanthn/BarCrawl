@@ -1,5 +1,7 @@
 {% block deets %}
-<link rel="stylesheet" type="text/css" href="css/deets.css" %}" />
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'twitterhandler/css/bootstrap.css' %}" />
 
 <h1>{{ location.place_name }}</h1>
 
