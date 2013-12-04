@@ -1,3 +1,7 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'twitterhandler/css/bootstrap.css' %}" />
+
 {% if latest_loc_list %}
     <ul>
     {% for loc in latest_loc_list %}

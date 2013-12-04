@@ -6,15 +6,14 @@ from location.models import Location
 from twitterhandler.models import Tweet
 
 def homePage(request):
-	return HttpResponse(
-	"You're looking at our under construction home page. "
-	 +" Try /admin/ or /twitterhandler/")
+	latest_loc_list = Location.objects.order_by('-place_name')
+	context = { 'latest_loc_list': latest_loc_list}
+	return render(request, 'twitterhandler/index.html', context)
 
 def locationIndex(request):
 	latest_loc_list = Location.objects.order_by('-place_name')[:5]
 	context = { 'latest_loc_list': latest_loc_list}
 	return render(request, 'twitterhandler/index.html', context)
-	
 	
 
 def locationDetails(request, loc_id):

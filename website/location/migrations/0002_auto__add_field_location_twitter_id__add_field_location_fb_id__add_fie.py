@@ -8,20 +8,31 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding model 'Tweet'
-        db.create_table(u'twitterhandler_tweet', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('tweet_id', self.gf('django.db.models.fields.CharField')(max_length=50)),
-            ('tweet_text', self.gf('django.db.models.fields.CharField')(max_length=200)),
-            ('tweet_created_at', self.gf('django.db.models.fields.DateTimeField')()),
-            ('location', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['location.Location'])),
-        ))
-        db.send_create_signal(u'twitterhandler', ['Tweet'])
+        # Adding field 'Location.twitter_id'
+        db.add_column(u'location_location', 'twitter_id',
+                      self.gf('django.db.models.fields.CharField')(default='', max_length=50),
+                      keep_default=False)
+
+        # Adding field 'Location.fb_id'
+        db.add_column(u'location_location', 'fb_id',
+                      self.gf('django.db.models.fields.CharField')(default='', max_length=50),
+                      keep_default=False)
+
+        # Adding field 'Location.fb_user_count'
+        db.add_column(u'location_location', 'fb_user_count',
+                      self.gf('django.db.models.fields.IntegerField')(default=0),
+                      keep_default=False)
 
 
     def backwards(self, orm):
-        # Deleting model 'Tweet'
-        db.delete_table(u'twitterhandler_tweet')
+        # Deleting field 'Location.twitter_id'
+        db.delete_column(u'location_location', 'twitter_id')
+
+        # Deleting field 'Location.fb_id'
+        db.delete_column(u'location_location', 'fb_id')
+
+        # Deleting field 'Location.fb_user_count'
+        db.delete_column(u'location_location', 'fb_user_count')
 
 
     models = {
@@ -29,6 +40,8 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'Location'},
             'city': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
             'country': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
+            'fb_id': ('django.db.models.fields.CharField', [], {'default': "''", 'max_length': '50'}),
+            'fb_user_count': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'lattitude_1': ('django.db.models.fields.FloatField', [], {'default': '0'}),
             'lattitude_2': ('django.db.models.fields.FloatField', [], {'default': '0'}),
@@ -42,16 +55,9 @@ class Migration(SchemaMigration):
             'longitude_center': ('django.db.models.fields.FloatField', [], {'default': '0'}),
             'place_name': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'tweeter_count': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
-            'twitter_handle': ('django.db.models.fields.CharField', [], {'default': "''", 'max_length': '30'})
-        },
-        u'twitterhandler.tweet': {
-            'Meta': {'object_name': 'Tweet'},
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'location': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['location.Location']"}),
-            'tweet_created_at': ('django.db.models.fields.DateTimeField', [], {}),
-            'tweet_id': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
-            'tweet_text': ('django.db.models.fields.CharField', [], {'max_length': '200'})
+            'twitter_handle': ('django.db.models.fields.CharField', [], {'default': "''", 'max_length': '30'}),
+            'twitter_id': ('django.db.models.fields.CharField', [], {'default': "''", 'max_length': '50'})
         }
     }
 
-    complete_apps = ['twitterhandler']
+    complete_apps = ['location']

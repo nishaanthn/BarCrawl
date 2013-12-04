@@ -1,4 +1,6 @@
 from BarCrawlClasses import Bar as Bar
+import json
+import os
 
 # --- Global Variable
 bars = []				# Temporary storage, Change as necessary
@@ -48,8 +50,35 @@ def loadAllBarData(fileName, barList):
 			barList.append(bar)
 
 		# --- Printing Bar Data (for testing)
-		#for bar in barList:
-			#bar.printBarData()
+		with open('locationfixtures.json', 'w') as outfile:
+			outfile.write('[')
+			for bar in barList:
+				temp = {}
+				temp["country"] = "USA"
+				temp["city"] = "College Station"
+				temp["name"] = bar.name
+				temp["twtter_handle"] = bar.twitterHandle
+				temp["twitter_id"] = bar.twitterID
+				temp["fb_id"] = bar.FBid
+				
+				temp["lattitude_1"] = bar.barCorners[0][0]
+				temp["longitude_1"] = bar.barCorners[0][1]
+				temp["lattitude_2"] = bar.barCorners[1][0]
+				temp["longitude_2"] = bar.barCorners[1][1]
+				temp["lattitude_3"] = bar.barCorners[2][0]
+				temp["longitude_3"] = bar.barCorners[2][1]
+				temp["lattitude_4"] = bar.barCorners[3][0]
+				temp["longitude_4"] = bar.barCorners[3][1]
+
+				temp["lattitude_center"] = bar.centerOfBarLoc[0]
+				temp["longitude_center"] = bar.centerOfBarLoc[1]
+
+				json.dump(temp,outfile)
+				outfile.write(',\n')
+				
+			outfile.seek(-2, os.SEEK_END)
+			outfile.truncate()
+			outfile.write(']')
 
 
 if __name__ == "__main__":

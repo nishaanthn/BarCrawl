@@ -1,11 +1,13 @@
 {% block deets %}
-<link rel="stylesheet" type="text/css" href="css/deets.css" %}" />
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'twitterhandler/css/bootstrap.css' %}" />
 
 <h1>{{ location.place_name }}</h1>
 
 {% if error_message %}<p><strong>{{error_message }}</strong></p> {% endif %}
 
-
+<!--
 <form action="{% url 'twitterhandler:locationDetails' location.id %}" method="post">
 
 <input type="text" name="Lattitude 1" id="lattitude 1" value="{{ location.lattitude_1 }}" />
@@ -19,7 +21,7 @@
 
 </br>
 <input type="submit" value="Submit" />
-</form>
+</form> --!>
 
 <div id="map_canvas"></div>
 
