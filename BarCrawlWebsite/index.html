@@ -18,10 +18,17 @@
     <!-- Page Specific CSS -->
     <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
 	
+	<!-- get weather -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>	
+	<script src="js/weather.js" type="text/javascript"></script>
+
 	<!-- Google Maps JavaScript -->
 	<script type="text/javascript"
            src="http://maps.googleapis.com/maps/api/js?&key=AIzaSyC4lpST8lr1V-IfOweBdNeithZNVTx1q6s&sensor=false">
 	</script>
+	<!-- get bar coords -->
+	<script src="js/map.js" type="text/javascript"></script>
+	<!-- initialize gmaps -->
 	<script type="text/javascript">
 		function initialize() {
         var mapOptions = {
@@ -31,15 +38,28 @@
         };
         var map = new google.maps.Map(document.getElementById("map-canvas"),
             mapOptions);
+		
+			
+		DaisyDukes.setMap(map);
+		MadHatters.setMap(map);
+		DixieChicken.setMap(map);
+		DuddleysDraw.setMap(map);
+		OBannons.setMap(map);
+		Logans.setMap(map);
+		Sake.setMap(map);
+		Hooka.setMap(map);
+		Foundation.setMap(map);
+		Social.setMap(map);
       }
+	  
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>
-	
+	<link rel="shortcut icon" href="favicon.ico">
   </head>
 
   <body>
-
-    <div id="wrapper">
+    <script type="text/javascript">GetWeatherForLocation(30.616703,-96.333544,"weatherDiv"); getLocation();</script>
+	<div id="wrapper">
 
       <!-- NavBar -->
       <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -72,8 +92,8 @@
             <li class="dropdown alerts-dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> Alerts <span class="badge">2</span> <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Server Running <span class="label label-success">Success</span></a></li>
-                <li><a href="#">Weather Alert <span class="label label-danger">Rain</span></a></li>
+                <li><a href="#">NorthGate Weather <span class="label label-danger" id="weatherDiv"></span></a></li>
+                <li><a href="#"><span id="curLoc">Your Weather </span><span class="label label-danger" id="geoDiv"> N/A</span></a></li>
               </ul>
             </li>
             <li class="dropdown user-dropdown">
