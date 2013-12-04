@@ -5,9 +5,9 @@ from django.template import RequestContext, loader
 from location.models import Location
 
 def homePage(request):
-	return HttpResponse(
-	"You're looking at our under construction home page. "
-	 +" Try /admin/ or /twitterhandler/")
+	latest_loc_list = Location.objects.order_by('-place_name')
+	context = { 'latest_loc_list': latest_loc_list}
+	return render(request, 'location/index.html', context)
 
 def locationIndex(request):
 	loc_list = Location.objects.order_by('-place_name')[:10]

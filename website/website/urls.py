@@ -13,5 +13,5 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     
-    url(r'^$', location.views.homePage, name='home'),
+    url(r'^$', twitterhandler.views.homePage, name='home'),
 )
