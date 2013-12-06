@@ -1,5 +1,5 @@
-from django.conf.urls import patterns, url
-
+from django.conf.urls import patterns, url, include
+from django.contrib import admin
 from twitterhandler import views
 
 urlpatterns = patterns('',
@@ -9,6 +9,7 @@ urlpatterns = patterns('',
 	url(r'^bars/', views.locationList, name='locationList'),
 	url(r'^about/', views.aboutUs, name='aboutUs'),
 	url(r'^contact/', views.contactUs, name='contactUs'),
+	url('^admin/', include(admin.site.urls)),
 	#url(r'^(?P<tweet_id>\d+)/$', views.tweetDetails, name='tweetDetails'),
 	
 )

@@ -6,7 +6,7 @@ from location.models import Location
 from twitterhandler.models import Tweet
 
 def homePage(request):
-	latest_loc_list = Location.objects.order_by('-place_name')[:5]
+	latest_loc_list = Location.objects.order_by('-tweeter_count')[:5]
 	context = { 'latest_loc_list': latest_loc_list}
 	return render(request, 'twitterhandler/index3.html', context)
 
@@ -30,6 +30,7 @@ def contactUs(request):
 
 def aboutUs(request):
 	return render(request, 'twitterhandler/who_we_are.html')
+	
 	
 	
 def tweetDetails(request, tweet_id):

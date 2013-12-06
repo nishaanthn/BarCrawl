@@ -4,7 +4,7 @@
 {% block title %}{{ title }} | {% trans 'BarCrawl site admin' %}{% endblock %}
 
 {% block branding %}
-<h1 id="BarCrawl">{% trans 'BarCrawl administration' %}</h1>
+<h1 id="BarCrawl"><a href="{% url 'twitterhandler:homePage' %}">{% trans 'BarCrawl' %}</a></h1>
 {% endblock %}
 
 {% block nav-global %}{% endblock %}
