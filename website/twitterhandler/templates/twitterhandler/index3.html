@@ -1,0 +1,106 @@
+{% extends "twitterhandler/base_site.html" %}
+
+{% block title %} Dashboard {% endblock %}
+{% block headerThings %}
+{% load static %}
+<!-- Google Maps JavaScript -->
+  <script type="text/javascript"
+           src="http://maps.googleapis.com/maps/api/js?&key=AIzaSyC4lpST8lr1V-IfOweBdNeithZNVTx1q6s&sensor=false">
+  </script>
+  <!-- get bar coords -->
+  <script src="{% static 'twitterhandler/js/map.js' %}" type="text/javascript"></script>
+  <!-- initialize gmaps -->
+  <script type="text/javascript">
+    function initialize() {
+        var mapOptions = {
+      center: new google.maps.LatLng(30.61855, -96.34575),
+      zoom: 18,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);      
+    DaisyDukes.setMap(map);
+    MadHatters.setMap(map);
+    DixieChicken.setMap(map);
+    DuddleysDraw.setMap(map);
+    OBannons.setMap(map);
+    Logans.setMap(map);
+    Sake.setMap(map);
+    Hooka.setMap(map);
+    Foundation.setMap(map);
+    Social.setMap(map);
+      }
+    
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+  <link rel="shortcut icon" href="favicon.ico">
+{% endblock %}
+{% block content %}
+{% load static %}
+<div class="row"> <!-- Title Row -->
+  <div class="col-lg-12">
+    <h1>Dashboard <small>Statistics Overview</small></h1>
+    <ol class="breadcrumb">
+      <li class="active"><i class="fa fa-dashboard"></i> Dashboard</li>
+    </ol>
+    <div class="alert alert-success alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      Welcome to BarCrawl by us. Feel free to use this application for your party needs! Enjoy Northgate like never before!
+    </div>
+  </div>
+</div><!-- /.row -->
+
+<div class="row"> <!-- GOOGLE MAPS ROW -->
+  <div class="col-lg-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Bar Statistics: Today</h3>
+      </div>
+      <div class="panel-body">
+<div id="map-canvas"></div> <!-- GOOGLE MAPS -->
+      </div>
+    </div>
+  </div>
+</div><!-- /.row -->
+
+<div class="row"> <!-- Row of three tables -->
+  <div class="col-lg-6"> <!-- More Information on Bars -->
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Top 5 Bars in the Area</h3>
+      </div>
+      <div class="panel-body">
+        <div id="barlist" class="list-group">
+          {% if latest_loc_list %}
+            {% for loc in latest_loc_list %}
+            <a href="{% url 'twitterhandler:locationDetails' loc.id%}" class="list-group-item">
+              <span class="badge">{{ loc.tweeter_count}}</span>
+              <i class="fa fa-beer"></i> {{loc.place_name }}
+            </a>
+            {% endfor %}
+            <a href="{% url 'twitterhandler:locationList' %}" class="list-group-item">
+              <i class="fa fa-plus-circle"></i> All the bars...
+            </a>
+         {% else %}
+          <a href="#" class="list-group-item">
+            <span class="badge">Error</span>
+            No Locations Available
+          </a> 
+          {% endif %} 
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6"> <!-- Recent Activity -->
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-clock-o"></i> Cities Supported</h3>
+      </div>
+      <div class="panel-body">
+College Station, more to come...
+      </div>
+    </div>
+  </div>
+</div><!-- /.row -->
+
+{% endblock %}

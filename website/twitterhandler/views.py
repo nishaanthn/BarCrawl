@@ -6,16 +6,15 @@ from location.models import Location
 from twitterhandler.models import Tweet
 
 def homePage(request):
-	latest_loc_list = Location.objects.order_by('-place_name')
+	latest_loc_list = Location.objects.order_by('-place_name')[:5]
 	context = { 'latest_loc_list': latest_loc_list}
-	return render(request, 'twitterhandler/index.html', context)
+	return render(request, 'twitterhandler/index3.html', context)
 
 def locationIndex(request):
 	latest_loc_list = Location.objects.order_by('-place_name')[:5]
 	context = { 'latest_loc_list': latest_loc_list}
 	return render(request, 'twitterhandler/index.html', context)
 	
-
 def locationDetails(request, loc_id):
 	try:
 		location = Location.objects.get(pk=loc_id)
@@ -23,6 +22,15 @@ def locationDetails(request, loc_id):
 		raise Http404
 	return render(request, 'twitterhandler/detail.html', {'location':location})
 
+def locationList(request):
+	return render(request, 'twitterhandler/bars.html')
+	
+def contactUs(request):
+	return render(request, 'twitterhandler/contact_us.html')
+
+def aboutUs(request):
+	return render(request, 'twitterhandler/who_we_are.html')
+	
 	
 def tweetDetails(request, tweet_id):
 	try:
