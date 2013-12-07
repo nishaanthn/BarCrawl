@@ -26,45 +26,30 @@ class TweetCollector():
 		
 		# Create File info for tweets
 		fileName = query.replace(" ", "") + ".txt"
-		"""
-		if os.path.exists("Documents"):
-			outPutFile = open(os.path.join("Documents", fileName.lower()), 'w+')
-		else:
-			os.makedirs("Documents")
-			outPutFile = open(os.path.join("Documents", fileName.lower()), 'w+')
-		"""
 		
+		# Create Path for Data if it Doesnt Exist
 		if os.path.exists("BarCrawlData"):
 			outPutFile = open(os.path.join("BarCrawlData", fileName.lower()), 'w+')
 		else:
 			os.makedirs("BarCrawlData")
 			outPutFile = open(os.path.join("BarCrawlData", fileName.lower()), 'w+')
 		
-		tweetText = ""
-		
-		i = 0
+		# Get the Most Recent Tweets for a Particular Bar
 		for tweet in tweepy.Cursor(self.api.search,q=query, result_type="recent", include_entities=True, lang="en").items():
 		#for tweet in tweepy.Cursor(self.api.search,geocode="30.618737,-96.347245,.1mi", count=20, result_type="recent", include_entities=True, lang="en").items():
 			
-			
-			''' -- Older code , may be useful later 
-			#outPutFile.write(str(tweet.text.encode('utf-8')) + '\n')
-			#lat, lon = tweet.geo["coordinates"] if tweet.geo else ('', '')
-			#outPutFile.write(str(tweet.text.encode('utf-8')) + '\t' + "Coordinates: (" + str(lat) + " , " + str(lon) + ")" + '\n')
-			'''
-			
-			# Check date info
+			# Get Date Info of Current Tweet
 			dateCreated = datetime.strptime(str(tweet.created_at), '%Y-%m-%d %H:%M:%S')
 			oldestDate = datetime(2013, 11, 7)
 			
+			# If tweet is newr than oldest date, print it to file
 			if (dateCreated > oldestDate):
 				outPutFile.write("{\"created_at\":\"" +  str(tweet.created_at) + "\"," + "\"id\": \"" + str(tweet.id) + "\"," + "\"text\":\"" + str(tweet.text.encode('utf-8')).replace('\n', '') + "\"}\n")
+			
 			else:
 				print "This date is too old! "
 				print dateCreated
 				break
-			#print(tweet.geo)
-			print tweet.created_at
 			
 			
 	
@@ -79,13 +64,11 @@ class TweetCollector():
 	
 	def send_querys(self):
 		#Loop through all querys and send that them to the tweet collector
-		i = 0
 		for query in self.queries:
 			print query
 			self.CollectTweets(query)
 	
 if __name__ == "__main__":
 	tweetCollector = TweetCollector()
-	#tweetCollector.read_query_list("queryList.txt")
-	tweetCollector.read_query_list("ProjectQueryList.txt")
+	tweetCollector.read_query_list("BarTwitterList.txt")
 	tweetCollector.send_querys()
