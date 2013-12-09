@@ -15,10 +15,8 @@
 </div>
 
 <ul class="list-group">
-<li class="list-group-item"> Tweeters in the bar  {{ location.tweeter_count}} </span></li>
+<li class="list-group-item"> People Buzzing about {{location.place_name }} :  {{ location.tweeter_count}} </span></li>
 </ul>
-
-
 
 
 <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
@@ -63,7 +61,28 @@
   }
   google.maps.event.addDomListener(window, 'load', initialize);
 </script>
+  <div class="col-lg-6">
+    <div class="panel panel-primary">
+      {% if tweets %}
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Recent Tweets about {{location.place_name }}</h3>
+        </div>
+        <div class="panel-body">
+        {% for tweet in tweets %}
+          <div id="barlist" class="list-group">
+            <i class="fa fa-beer"></i> {{ tweet.tweet_text}}
+              <span class="badge">{{ tweet.tweet_created_at}}</span>
+          </div>
+              
+        {% endfor %}
+      {% endif %}
+      </div>
+    </div>
+  </div>
+
 <div id="individual_map_canvas"></div>
+</br>
+<ol class="breadcrumb"></ol>
 
 
 

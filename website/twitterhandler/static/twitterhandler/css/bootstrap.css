@@ -5908,7 +5908,15 @@ td.visible-print {
   transition: height 0.35s ease;
 }
 
+#hailmarytweets {
+  position: relative;
+  float: left;
+}
+
 #individual_map_canvas {
+  position: relative;
+  float: center;
+  margin-left:40px;
   width: 500px;
   height: 400px;
   border-radius: 10px;

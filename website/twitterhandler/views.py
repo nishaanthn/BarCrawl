@@ -17,13 +17,17 @@ def locationIndex(request):
 	
 def locationDetails(request, loc_id):
 	try:
-		location = Location.objects.get(pk=loc_id)
+		locations = Location.objects.get(pk=loc_id)
+		tweets = Tweet.objects.filter(location__twitter_handle=locations.twitter_handle)
 	except Location.DoesNotExist:
 		raise Http404
-	return render(request, 'twitterhandler/detail.html', {'location':location})
+	return render(request, 'twitterhandler/detail.html', {'location':locations, 'tweets':tweets})
 
 def locationList(request):
-	return render(request, 'twitterhandler/bars.html')
+	loc_list = Location.objects.order_by('-tweeter_count')
+	context = { 'loc_list': loc_list}
+	return render(request, 'twitterhandler/allbars.html', context)
+	
 	
 def contactUs(request):
 	return render(request, 'twitterhandler/contact_us.html')
