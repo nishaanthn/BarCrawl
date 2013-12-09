@@ -1,3 +1,24 @@
+{"created_at":"2013-12-09 02:09:49","id": "409867449022951424","text":"Sunday Funday! Come in for our $3 frozen watermelon mojitos and water moccasin shooters!"}
+{"created_at":"2013-12-08 23:08:37","id": "409821848298221568","text":"Between my braised short ribs and tipsy turtle cupcake, my Sunday dinner won!"}
+{"created_at":"2013-12-08 22:27:23","id": "409811471078813696","text":"RT @MyrthaStewart: Behold...the Tipsy Turtle. @MissFoodieFab @kendence http://t.co/XhGGV0XJnq"}
+{"created_at":"2013-12-08 22:21:37","id": "409810020805931008","text":"Drinking a Fat Dog Stout by @StoudtsBrewery @ Tipsy Turtle Owen St Pub — http://t.co/WU9ghXgxhJ"}
+{"created_at":"2013-12-08 22:09:32","id": "409806981667778561","text":"“@MyrthaStewart: Behold...the Tipsy Turtle. http://t.co/yue8NaSYQz”&lt;Oh, gawd! Shut the front door, Jesus! 😝😝😝"}
+{"created_at":"2013-12-08 21:31:27","id": "409797396198350848","text":"Behold...the Tipsy Turtle. @MissFoodieFab @kendence http://t.co/XhGGV0XJnq"}
+{"created_at":"2013-12-08 18:17:04","id": "409748477191933952","text":"Serious? RT @LeboLola On my way :'D RT Dig_o_Bick: @LeboLola Tipsy Turtle... Ko Montana...""}
+{"created_at":"2013-12-08 07:16:40","id": "409582283906375680","text":"Houston! @ Tipsy Turtle http://t.co/jMGhG2aMbx"}
+{"created_at":"2013-12-08 06:59:26","id": "409577943988727808","text":"Just posted a photo @ Tipsy Turtle http://t.co/pkBvqvBTxy"}
+{"created_at":"2013-12-08 06:47:58","id": "409575060719304704","text":"Just posted a photo @ Tipsy Turtle http://t.co/Xc9FN3lWSe"}
+{"created_at":"2013-12-08 06:33:39","id": "409571456901976064","text":"Just posted a photo @ Tipsy Turtle http://t.co/LK5fFJRrsx"}
+{"created_at":"2013-12-08 06:33:20","id": "409571376908234752","text":"Just posted a photo @ Tipsy Turtle http://t.co/8FStTqaNKu"}
+{"created_at":"2013-12-08 06:32:37","id": "409571195634585600","text":"Our boys. @ Tipsy Turtle http://t.co/Uq4QvhEUsN"}
+{"created_at":"2013-12-08 06:31:08","id": "409570821708185600","text":"Real love. @ Tipsy Turtle http://t.co/VMKqRmV3KP"}
+{"created_at":"2013-12-08 06:24:57","id": "409569268754567168","text":"Just posted a photo @ Tipsy Turtle http://t.co/BqnSFOWlGh"}
+{"created_at":"2013-12-08 06:24:00","id": "409569030341939200","text":"Just posted a photo @ Tipsy Turtle http://t.co/LrwqsKlgc4"}
+{"created_at":"2013-12-08 04:21:24","id": "409538174772584448","text":"come by and say hiii, i may be a tipsy turtle but i'm not a mess tonight so helllo (:"}
+{"created_at":"2013-12-08 04:19:41","id": "409537744252047361","text":"Just checked-in at Tipsy Turtle via @snipstamp"}
+{"created_at":"2013-12-08 02:22:55","id": "409508356697497600","text":"$3 Pineapple Upside Down Cake Shooters and Frozen Strawberry Daiquiri's. $4.25 pickle shots!!!"}
+{"created_at":"2013-12-08 00:20:50","id": "409477634855563264","text":"Drinking a Mad Elf (2013) by @TroegsBeer @ Tipsy Turtle Owen St Pub — http://t.co/kvk4hPNdSQ"}
+{"created_at":"2013-12-08 00:20:10","id": "409477465590210561","text":"Drinking a Cold Front by @ithacabeer @ Tipsy Turtle Owen St Pub — http://t.co/jpfnWewygC"}
 {"created_at":"2013-12-07 14:56:53","id": "409335711402573824","text":"Tipsy Turtle Bark! http://t.co/Fl1XocqLr8"}
 {"created_at":"2013-12-07 01:55:43","id": "409139125598830593","text":"Drinking a Mad Elf by @TroegsBeer @ Tipsy Turtle Owen St Pub — http://t.co/oWBRP9zXMP"}
 {"created_at":"2013-12-07 01:51:06","id": "409137963881463809","text":"RT @JackAllTimeLow: I think I’m the turtle of my own entourage. Shit!"}
@@ -30,8 +51,3 @@
 {"created_at":"2013-12-02 23:37:10","id": "407654704890408960","text":"@JahovasWitniss Im making crewniverse server tutorials check them out please and help them get known maybe? idrc https://t.co/XqcsHi1VMb 1"}
 {"created_at":"2013-12-02 23:36:44","id": "407654596929019904","text":"@KYR_SP33DY Im making crewniverse server tutorials check them out please and help them get known maybe? idrc https://t.co/XqcsHi1VMb (1 up)"}
 {"created_at":"2013-12-02 00:12:25","id": "407301188208852993","text":"Tipsy turtle dinner. Turtle bite salad and buffalo chicken sandwich. #yum #Tipsy #Turtle http://t.co/rnC3mGguPV"}
-{"created_at":"2013-12-01 05:09:44","id": "407013622271848448","text":"S/o to Tipsy turtle"}
-{"created_at":"2013-12-01 01:33:58","id": "406959322447376385","text":"$3 Pineapple Upside Down Cake shooters and Strawberry Daiquiris tonight! BTHO Mizzou!"}
-{"created_at":"2013-11-30 16:27:03","id": "406821690107494400","text":"I just want tipsy turtle."}
-{"created_at":"2013-11-30 14:17:07","id": "406788989354377216","text":"@Linda_BAMF I don't remember the names of anything after the Tipsy Turtle. They're just not cool enough."}
-{"created_at":"2013-11-30 01:26:36","id": "406595081349521408","text":"@Linda_BAMF Tipsy Turtle! 🐢"}

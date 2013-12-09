@@ -3,7 +3,6 @@ import json
 import re
 import os
 from stemming import porter2
-import BarCrawlClasses
 from datetime import datetime
 
 class TweetCollector():

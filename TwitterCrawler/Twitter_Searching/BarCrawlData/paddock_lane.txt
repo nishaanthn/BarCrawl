@@ -1,3 +1,10 @@
+{"created_at":"2013-12-09 09:25:46","id": "409977158153404416","text":"New Works:Footway @ Paddock Lane, Redditch until 11/12/2013"}
+{"created_at":"2013-12-09 02:08:47","id": "409867190377013249","text":"Surplus Sunday! Come celebrate the end of the semester with us! $1.50 domestic beers and wells all night long!"}
+{"created_at":"2013-12-08 20:47:07","id": "409786238111997952","text":"it's cheaper than what F1 would charge still have the free access to the Paddock and the Pit lane something that Bernie would never give you"}
+{"created_at":"2013-12-08 02:28:03","id": "409509648933191680","text":"$4 Spiked Lemonades Grape, Blueberry, Raspberry, Cherry, Strawberry, Arnold Palmer, Citrus. Beer Specials: Stash, Sam Adams, Killians &amp;More"}
+{"created_at":"2013-12-08 00:29:49","id": "409479894804865025","text":"Most of the #V8SC cars have filed out of the paddock and into pit lane, except three: Winterbottom, Coulthard, Engel."}
+{"created_at":"2013-12-07 20:47:57","id": "409424061588987904","text":"RT @OrmeBrittani: Lol. 👍 @ Paddock Lane http://t.co/7h1VnAySBX"}
+{"created_at":"2013-12-07 20:47:06","id": "409423848019619842","text":"Lol. 👍 @ Paddock Lane http://t.co/7h1VnAySBX"}
 {"created_at":"2013-12-07 07:12:57","id": "409218957585833984","text":"What a day, Monk Bodhi Dharma, Market Lane, Top Paddock, Dukes and finishing off with some fine fare at Gingerboy http://t.co/6hyOIRe6Bi"}
 {"created_at":"2013-12-06 18:06:23","id": "409021012148490240","text":"Maybe now some sleep? (@ Paddock Lane) http://t.co/R6SquxeUml"}
 {"created_at":"2013-12-06 09:03:14","id": "408884324876812289","text":"Continuing Works:Footway @ Paddock Lane Redditch until 06/12/2013"}
@@ -18,5 +25,3 @@
 {"created_at":"2013-12-03 04:25:19","id": "407727221453754369","text":"Am I dreaming?!?! This is awesome!! RT “@YoMattStaggs: Welcome to gator nation lane kiffin #offensivecoordinator”"}
 {"created_at":"2013-12-03 01:40:46","id": "407685810268299264","text":"Once again it's Mexican Beer Monday!!! Come enjoy Dos Equis, Sol, Victoria, Corona, and Negra Modelo bottles for only $2.75"}
 {"created_at":"2013-12-03 01:37:44","id": "407685049819996160","text":"RT @yyctransport: ALERT: 14 St NW reduced to one lane each direction b/w Kensington Rd and 2 Ave NW due to water main break. #yyctraffic #y…"}
-{"created_at":"2013-11-30 23:59:54","id": "406935651464904704","text":"We are opening early around 6:45 for the game, plus cheap Spiked Lemonades all night! BTHO Missouri!"}
-{"created_at":"2013-11-30 18:47:54","id": "406857132823568384","text":"Thanksgiving Fishbowl 🐳 #instasalud #instaNG #family 🎀💗 @karlamata_94 patylutp @ Paddock Lane http://t.co/pQPMlW8uyi"}
