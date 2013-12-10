@@ -1344,11 +1344,11 @@ th {
 }
 .table-striped > tbody > tr:nth-child(odd) > td,
 .table-striped > tbody > tr:nth-child(odd) > th {
-  background-color: #f9f9f9;
+  background-color: #333333;
 }
 .table-hover > tbody > tr:hover > td,
 .table-hover > tbody > tr:hover > th {
-  background-color: #f5f5f5;
+  background-color: #B22222;
 }
 table col[class*="col-"] {
   float: none;
@@ -1385,7 +1385,7 @@ table th[class*="col-"] {
 .table > thead > tr.success > th,
 .table > tbody > tr.success > th,
 .table > tfoot > tr.success > th {
-  background-color: #dff0d8;
+  background-color: #7A7A7A;
   border-color: #d6e9c6;
 }
 .table-hover > tbody > tr > td.success:hover,
@@ -4397,14 +4397,15 @@ a.thumbnail:focus {
 .list-group {
   margin-bottom: 20px;
   padding-left: 0;
+  background-color: #EBEBEB;
 }
 .list-group-item {
   position: relative;
   display: block;
   padding: 10px 15px;
   margin-bottom: -1px;
-  background-color: #ffffff;
-  border: 1px solid #dddddd;
+  background-color: #2E2E2E;
+  border: 3px solid #dddddd;
 }
 .list-group-item:first-child {
   border-top-right-radius: 4px;
@@ -4430,7 +4431,7 @@ a.list-group-item .list-group-item-heading {
 a.list-group-item:hover,
 a.list-group-item:focus {
   text-decoration: none;
-  background-color: #f5f5f5;
+  background-color: #8B2323;
 }
 .list-group-item.active,
 .list-group-item.active:hover,
@@ -4498,6 +4499,7 @@ a.list-group-item:focus {
 }
 .panel > .list-group .list-group-item {
   border-width: 1px 0;
+  background-color: #808A87;
 }
 .panel > .list-group .list-group-item:first-child {
   border-top-right-radius: 0;

@@ -15,7 +15,7 @@
 </div>
 
 <ul class="list-group">
-<li class="list-group-item"> People Buzzing about {{location.place_name }} :  {{ location.tweeter_count}} </span></li>
+<li class="list-group-item"><font color="fbeed5">People Buzzing about {{location.place_name }} :  {{ location.tweeter_count}}</font>  </span></li>
 </ul>
 
 
@@ -57,7 +57,7 @@
   	var marker = new google.maps.Marker({
       position: new google.maps.LatLng({{location.lattitude_center}},{{location.longitude_center}}),
       map: map,
-      title: 'Use this pin to plan a route!'});
+      title: "{{location.place_name}} "});
   }
   google.maps.event.addDomListener(window, 'load', initialize);
 </script>
@@ -69,9 +69,10 @@
         </div>
         <div class="panel-body">
         {% for tweet in tweets %}
-          <div id="barlist" class="list-group">
-            <i class="fa fa-beer"></i> {{ tweet.tweet_text}}
-              <span class="badge">{{ tweet.tweet_created_at}}</span>
+          <div id="barlist" class="list-group-item">
+            <span class="badge">{{ tweet.tweet_created_at}}</span>
+            <font color="66CD00"><i class="fa fa-beer"></i></font> 
+            <font color="fbeed5">{{ tweet.tweet_text}}</font>
           </div>
               
         {% endfor %}

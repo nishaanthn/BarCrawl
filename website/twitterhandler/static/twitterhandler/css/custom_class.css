@@ -3,3 +3,9 @@
 	width:100%;
 	height:500px;
 }
+
+#legend
+{
+	background: white;
+	padding: 10px;
+}
